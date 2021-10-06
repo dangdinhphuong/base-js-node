@@ -1,0 +1,59 @@
+<script>
+    var domain = {
+        a: "freetuts.net",
+        b: "techtuts.net",
+        c: "simpletutorials.org",
+        f: {
+            a1: "freetuts.net",
+            b1: "techtuts.net",
+            c1: {
+                a12: "freetuts.net",
+                b12: "techtuts.net",
+                c12: "simpletutorials.org"
+            },
+        },
+        k: [
+            'cu',
+            'fe',
+            'mg',
+            'Al',
+            'H2'
+        ]
+    };
+
+    var b = {}
+    var test;
+
+    function clone(object) {
+        if ((object instanceof Object) == true) {
+            for (const property in object) {
+                if ((object[`${property}`] instanceof Object) == true) {
+
+                    if (object[`${property}`] instanceof Array == true) {
+                        test = [];
+                    }
+                    else {
+                        test = {};
+                    }
+
+                    for (const propertys in object[`${property}`]) {
+                        test[`${propertys}`] = object[`${property}`][`${propertys}`];
+                    }
+                    b[`${property}`] = test;
+
+                }
+                else {
+                    b[`${property}`] = object[property];
+                }
+
+            }
+        }
+
+        return b;
+    }
+
+    clone(domain)
+    b.a = 1232
+    console.log(domain);
+    console.log(b);
+</script>
