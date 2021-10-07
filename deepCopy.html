@@ -9,7 +9,11 @@
             c1: {
                 a12: "freetuts.net",
                 b12: "techtuts.net",
-                c12: "simpletutorials.org"
+                c12: {
+                    a13: "freetuts.net",
+                    b12: "techtuts.net",
+                    c12: "simpletutorials.org"
+                },
             },
         },
         k: [
@@ -21,45 +25,24 @@
         ]
     };
 
-    var b = {}
+    var b = "so nguyen"
 
-    var test;
-
-    function clone(object) {
-        if ((object instanceof Object) == true) {
-            for (const property in object) {
-                if ((object[`${property}`] instanceof Object) == true) {
-
-                    if (object[`${property}`] instanceof Array == true) {
-                        test = [];
-                    }
-                    else {
-                        test = {};
-                    }
-
-                    for (const propertys in object[`${property}`]) {
-                        test[`${propertys}`] = object[`${property}`][`${propertys}`];
-                    }
-                    b[`${property}`] = test;
-
-                }
-                else {
-                    b[`${property}`] = object[property];
-                }
-
+    function clone(obj) {
+        if (obj === null || typeof (obj) !== 'object') {
+            var temp = obj
+            return temp;
+        }
+        var temp={} ;
+        for (var key in obj) {
+            if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                temp[key] = clone(obj[key]);
             }
         }
-
-        return b;
+        return temp;
     }
 
-    clone(domain)
-    b.a = 1232
-    console.log(domain);
-    console.log(b);
-    // c2
-   
-    const c = JSON.parse(JSON.stringify(domain))
-    c.k[1]=126262626
-    console.log(c.k[1]); //126262626
+    var ac = clone(domain)
+    ac.k[1] = 1232
+    console.log(domain.k[1]);
+    console.log(ac.k[1]);
 </script>
