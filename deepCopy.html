@@ -22,6 +22,7 @@
     };
 
     var b = {}
+
     var test;
 
     function clone(object) {
@@ -56,4 +57,9 @@
     b.a = 1232
     console.log(domain);
     console.log(b);
+    // c2
+   
+    const c = JSON.parse(JSON.stringify(domain))
+    c.k[1]=126262626
+    console.log(c.k[1]); //126262626
 </script>
