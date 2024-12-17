@@ -1,0 +1,48 @@
+<script>
+    var domain = {
+        a: "freetuts.net",
+        b: "techtuts.net",
+        c: "simpletutorials.org",
+        f: {
+            a1: "freetuts.net",
+            b1: "techtuts.net",
+            c1: {
+                a12: "freetuts.net",
+                b12: "techtuts.net",
+                c12: {
+                    a13: "freetuts.net",
+                    b12: "techtuts.net",
+                    c12: "simpletutorials.org"
+                },
+            },
+        },
+        k: [
+            'cu',
+            'fe',
+            'mg',
+            'Al',
+            'H2'
+        ]
+    };
+
+    var b = "so nguyen"
+
+    function clone(obj) {
+        if (obj === null || typeof (obj) !== 'object') {
+            var temp = obj
+            return temp;
+        }
+        var temp={} ;
+        for (var key in obj) {
+            if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                temp[key] = clone(obj[key]);
+            }
+        }
+        return temp;
+    }
+
+    var ac = clone(domain)
+    ac.k[1] = 1232
+    console.log(domain.k[1]);
+    console.log(ac.k[1]);
+</script>
